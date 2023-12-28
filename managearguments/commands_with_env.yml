@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: command-with-env-demo
+  labels:
+    purpose: demo-command
+spec:
+  containers:
+  - name: command-with-env-demo-container
+    image: debian
+    command: ["/bin/echo"]
+    args: ["$(message)"]
+    env:
+    - name: message
+      value: "Hello Kubernetes"
+  restartPolicy: Never
